@@ -99,6 +99,22 @@ button {
               box-shadow .4s ease;
 }
 
+.card2 {
+  background-color: #f4f1eb;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  height: 200px;
+  width: 350px;
+  margin: 20vh auto 0 auto;
+  padding: 20px 10px 10px 10px;
+  transform: rotateX(80deg) rotateY(20deg) rotateZ(65deg);
+  /*transform-origin: 50% 100%;*/
+  box-shadow: 0;
+  transition: transform .4s ease,
+              box-shadow .4s ease;
+}
+
+
+
 .card:hover {
   cursor: pointer;
   transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg) translateZ(10px);
@@ -183,7 +199,8 @@ p {
 
 
 </head>
-<body translate="no">
+<body 
+translate="no">
   <button class="card">
   <div class="row clearfix">
     <div class="left big">JS</div>
@@ -205,4 +222,28 @@ p {
     <p><span class="med">Gainesville, FL </p>
   </div>
 </button>
+
+  <button class="card2">
+  <div class="row clearfix">
+    <div class="left big">JS</div>
+  
+  <div 
+    class="right"><p><span 
+      class="big"></span> <span class="big">U</span>niversity of Florida</p><p><span 
+        class="med no-space">J</span><span 
+          class="small no-space">acobStuart@ufledu </span><span 
+            class="med no-space"></span><span 
+              class="small no-space"></span></p>
+  </div>
+  </div>
+  <div class="row">
+    <p><span class="big">Jacob</span> <span class="big">Stuart</span></p>
+    <p><span class="big">R</span>esearch <span class="big">A</span>ssitant</p>
+  </div>
+  <div class="row">
+    <p><span class="med">Gainesville, FL </p>
+  </div>
+</button>
+
+
 </body>
