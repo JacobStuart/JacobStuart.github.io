@@ -354,7 +354,7 @@ p {
 </head>
 <body 
 translate="no">
-  <button onclick="centerCard()" name="card" class="card"> 
+  <button name="card" class="card"> 
   <div class="row clearfix">
     <div class="left big">JS</div>
   
@@ -404,8 +404,9 @@ translate="no">
 <footer>
 
   <script>
-    function centerCard() {
-      document.getElementById("card").setAttribute("class", "cardCenter");;
+    function change_css(){ 
+     document.getElementById('card').className='centerCard';
     }
-  </script>
+    </script>
+    <div onclick="change_css()" class="card"></div>
 </footer>
