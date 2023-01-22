@@ -405,7 +405,8 @@ translate="no">
 
   <script>
     function change_css(){ 
-     document.getElementById('card').className='centerCard';
+      var element = document.getElementById("card");
+      element.setAttribute("class", "cardCenter");
     }
     </script>
     <div onclick="change_css()" class="card"></div>
