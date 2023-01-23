@@ -415,7 +415,13 @@ translate="no">
   <script>
     function change_css(){ 
       var element = document.getElementById("BusinessCard");
-      element.setAttribute("class", "cardCenter");
+      var class_type = element.getAttribute("class");
+      if (class_tpye == "card") {
+        element.setAttribute("class", "cardCenter");
+      } else {
+        element.setAttribute("class", "card");
+      }
+      
     }
   </script>
 </footer>
