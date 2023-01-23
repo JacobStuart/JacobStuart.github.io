@@ -120,12 +120,14 @@ button {
   box-shadow: 20px 20px 20px rgba(0, 0, 0, .4);
 }
 
+/*
 .card:active {
   cursor: pointer;
   scale: 1.2;
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(10px);
   box-shadow: 20px 20px 20px rgba(0, 0, 0, .4);
 }
+*/
 
 .card:focus {
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(10px);
@@ -351,7 +353,7 @@ p {
 
   
   
-  <script>
+<script>
   if (document.location.search.match(/type=embed/gi)) {
     window.parent.postMessage("resize", "*");
   }
@@ -361,7 +363,7 @@ p {
 </head>
 <body 
 translate="no">
-  <button name="card" class="card"> 
+  <button name="card" class="card" onclick="change_css()"> 
   <div class="row clearfix">
     <div class="left big">JS</div>
   
@@ -415,6 +417,5 @@ translate="no">
       var element = document.getElementById("card");
       element.setAttribute("class", "cardCenter");
     }
-    </script>
-    <div onclick="change_css()" class="card"></div>
+  </script>
 </footer>
