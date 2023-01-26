@@ -108,8 +108,10 @@ button {
   padding: 20px 10px 10px 10px;
   transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
   box-shadow: 20px 20px 20px rgba(0, 0, 0, .4);
+  transform: scale(3);
   transition:
-    0.7s scale(3);
+    transform .4s ease,
+    box-shadow .4s ease;
     /*transform 330ms rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(10px),
     
     */
