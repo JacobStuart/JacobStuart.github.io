@@ -411,7 +411,7 @@ translate="no">
   </div>
 </button>
 
-  <button class="card2">
+  <button class="envelope" onclick="change_css_envelope()">
   <div class="row clearfix">
     <div class="left big">JS</div>
   
@@ -447,6 +447,17 @@ translate="no">
         element.setAttribute("class", "cardCenter");
       } else {
         element.setAttribute("class", "card");
+      }
+      
+    }
+
+    function change_css_envelope(){ 
+      var element = document.getElementById("envelope");
+      var class_type = element.getAttribute("class");
+      if (class_type == "card2") {
+        element.setAttribute("class", "card2Center");
+      } else {
+        element.setAttribute("class", "card2");
       }
       
     }
