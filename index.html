@@ -5,60 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-    <title>Jacob Stuart's Personal Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <title>Jacob Stuart's Personal Website</title>
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
+            font-weight: 300;
             line-height: 1.6;
-            margin: 0;
             color: #333;
             background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            padding: 20px;
-            background-color: #333;
+            background-color: #1a1a1a;
             color: #fff;
             text-align: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+
 
         header img {
             border-radius: 50%;
             width: 150px;
             height: 150px;
+            object-fit: cover;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 3px solid #4CAF50;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding: 0 10px;
+            font-size: 3em;
         }
 
         nav {
             display: flex;
             justify-content: center;
-            background-color: #444;
+            background-color: #4CAF50;
             padding: 10px 0;
+            transition: all 0.3s ease;
         }
+
+        .nav-transition {
+            background-color: #1a1a1a;
+            transition: background-color 0.3s ease;
+        }
+
 
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 8px 16px;
+            font-size: 1.1em;
+            font-weight: 400;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            background-color: #555;
+            background-color: #3c8e40;
         }
 
         main {
             padding: 30px;
             max-width: 800px;
             margin: 0 auto;
+            flex-grow: 1;
         }
 
-        h1,
         h2,
         h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
@@ -75,14 +121,6 @@
             margin-bottom: 20px;
         }
 
-        h3 {
-            font-weight: 600;
-        }
-
-        strong {
-            font-weight: 600;
-        }
-
         .social-icons {
             display: flex;
             justify-content: center;
@@ -94,116 +132,217 @@
             color: #333;
             font-size: 24px;
             margin: 0 10px;
+            transition: all 0.3s ease;
         }
 
         .social-icons a:hover {
             color: #555;
         }
 
+        .fadeIn {
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .experience-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .experience-list {
+            margin-left: 20px;
+        }
+
         @media screen and (max-width: 768px) {
             nav {
                 flex-direction: column;
             }
+
+            .experience-list {
+                margin-left: 0;
+            }
         }
 
-        .publications-container {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 30px;
+        header img,
+        header h1,
+        nav a {
+            transition: all 0.3s ease;
         }
-        .profile-image {
-            object-fit: cover;
+
+        .sticky-header {
+            padding: 5px 0;
         }
+
+        .sticky-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .sticky-header h1 {
+            font-size: 1.5em;
+            margin-bottom: 0;
+        }
+
+        .sticky-header nav a {
+            padding: 4px 16px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
     </style>
 </head>
 
 <body>
     <header>
         <img src="your_photo.jpg" alt="Your photo" class="profile-image">
-        <h1>Jacob Stuart</h1>
+        <h1 class="fadeIn">Jacob Stuart</h1>
         <nav>
-            <a href="#education">Education</a>
-            <a href="#research-focus">Research</a>
-            <a href="#jobs">Jobs</a>
+            <a href="#education" class="fadeIn">Education</a>
+            <a href="#research-focus" class="fadeIn">Research</a>
+            <a href="#experiences" class="fadeIn">Work Experience</a>
         </nav>
     </header>
     <main>
-        <h2 id="education">Education</h2>
-        <ul>
-            <li>
-                <strong>PhD:</strong> Human-Centered Computing, University of Florida, Virtual Experiences Research Group, Advisor: Dr. Benjamin
-                Lok
-            </li>
-            <li>
-                <strong>Masters:</strong> Computer Science, University of Florida
-            </li>
-            <li>
-                <strong>Bachelors
-                    :</strong> Computer Science, University of Georgia
-            </li>
-            <li>
-                <strong>Bachelors:</strong> Cognitive Science, University of Georgia
-            </li>
-        </ul>
-        <h2 id="research-focus">Research Focus</h2>
-        <p>Virtual humans and augmented reality in healthcare</p>
-        <h2 id="jobs">Jobs</h2>
-        <ul>
-            <li>
-                <h3>Graduate Research Assistant (2018 – Present)</h3>
-                <ul>
+        <div class="card fadeIn">
+            <h2 id="education" class="section-title">Education</h2>
+            <ul>
+                <!-- Education items here -->
+                <li>
+                    <strong>PhD:</strong> Human-Centered Computing, University of Florida, Virtual Experiences Research
+                    Group
+                </li>
+                <li>
+                    <strong>Masters:</strong> Computer Science, University of Florida
+                </li>
+                <li>
+                    <strong>Bachelors
+                        :</strong> Computer Science, University of Georgia
+                </li>
+                <li>
+                    <strong>Bachelors:</strong> Cognitive Science, University of Georgia
+                </li>
+            </ul>
+        </div>
+        <div class="card fadeIn">
+            <h2 id="research-focus" class="section-title">Research Focus</h2>
+            <p>Virtual humans and augmented reality in healthcare</p>
+        </div>
+        <div class="card fadeIn">
+            <h2 id="experiences" class="section-title">Work Experience</h2>
+            <div class="experience">
+                <h3 class="experience-title">Graduate Research Assistant</h3>
+                <p>University of Florida (2018 - Present)</p>
+                <ul class="experience-list">
                     <li>Collaborated with multiple institutions on applied interdisciplinary research initiatives</li>
-                    <li>Developed immersive augmented/virtual reality simulation-based trainings</li>
+                    <li>Developed immersive augmented/virtual reality simulation-based trainings that utilized conversational agents</li>
                     <li>Designed and conducted user studies</li>
                     <li>Used statistical methods to analyze, interpret, and report on data</li>
                     <li>Published and communicated research findings to diverse audiences</li>
                     <li>Mentored undergraduate students</li>
                 </ul>
-            </li>
-            <li>
-                <h3>Graduate Teaching Assistant (Aug. 2020 – Dec. 2020, Aug. 2022 – Dec. 2022)</h3>
-                <ul>
+            </div>
+            <div class="experience">
+                <h3 class="experience-title">Graduate Teaching Assistant</h3>
+                <p>University of Florida  (Aug. 2020 – Dec. 2020, Aug. 2022 – Dec. 2022)</p>
+                <ul class="experience-list">
                     <li>Provided personalized educational, behavioral, and emotional support</li>
                     <li>Developed teaching materials</li>
                     <li>Hosted office hours and Q&A sessions</li>
                     <li>Coordinated with industry partners</li>
                     <li>Advised students on interactions with corporate partners</li>
                 </ul>
-            </li>
-            <li>
-                <h3>Official Lens Creator, Snap Lens Network (May 2022 – Present)</h3>
-                <ul>
+            </div>
+            <div class="experience">
+                <h3 class="experience-title">Official Lens Creator, Snap Lens Network</h3>
+                <p>Snap Inc. (May 2022 – Present)</p>
+                <ul class="experience-list">
                     <li>Developed low to high-fidelity lenses</li>
                     <li>Created original 2D and 3D assets for new AR lenses</li>
                     <li>Scripted lenses to provide greater interaction</li>
                     <li>Utilized current pop-culture events to drive user engagement</li>
                     <li>Accumulated over 3 million views on AR lenses</li>
                 </ul>
-            </li>
-            <li>
-                <h3>Participant, Spectacles Creator Program (Mar. 2022 – May 2022)</h3>
-                <ul>
+            </div>
+            <div class="experience">
+                <h3 class="experience-title">Spectacles Creator Program</h3>
+                <p>Snap Inc. (Mar. 2022 – May 2022)</p>
+                <ul class="experience-list">
                     <li>Created medical simulation lenses for the new generation of Spectacles</li>
-                    <li>Engaged in AR development workshops with Snap product and UX designers and Snap AR engineers
-                    </li>
+                    <li>Engaged in AR development workshops with Snap product and UX designers and Snap AR engineers</li>
                     <li>Provided feedback on improvements to spectacles software features and hardware</li>
                     <li>Resulted in changes to landmark-based tracking systems used by Snapchat</li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+        </div>
+
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/jacob-stuart-929727132/" target="_blank" rel="noopener noreferrer"><i
-                    class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/JacobStuart" target="_blank" rel="noopener noreferrer"><i
-                    class="fa fa-github"></i></a>
-            <a href="mailto:JacobStuart@ufl.edu"><i class="fa fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/jacobstuart/" target="_blank" class="fadeIn">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/jacobstuart" target="_blank" class="fadeIn">
+                <i class="fa fa-github"></i>
+            </a>
+            <a href="mailto:jacob.stuart@example.com" target="_blank" class="fadeIn">
+                <i class="fa fa-envelope"></i>
+            </a>
             <a href="https://scholar.google.com/citations?user=Z3VWiAQAAAAJ&hl=en" target="_blank"
                 rel="noopener noreferrer"><i class="ai ai-google-scholar"></i></a>
-
         </div>
     </main>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let header = document.querySelector("header");
+            let nav = document.querySelector("nav");
+
+            window.addEventListener("scroll", () => {
+                let scrollPosition = window.scrollY;
+
+                if (scrollPosition > 50) {
+                    header.classList.add("sticky-header");
+                    nav.classList.add("nav-transition");
+                } else {
+                    header.classList.remove("sticky-header");
+                    nav.classList.remove("nav-transition");
+                }
+            });
+        });
+
+        document.querySelectorAll("nav a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = e.target.getAttribute("href");
+            const target = document.querySelector(targetId);
+            const headerHeight = document.querySelector("header").offsetHeight;
+            const targetPosition = (target.offsetTop - headerHeight) - 30;
+
+            window.scrollTo({ top: targetPosition, behavior: "smooth" });
+          });
+        });
+
+    </script>
 </body>
 
 </html>
