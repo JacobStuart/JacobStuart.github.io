@@ -4,29 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
-        rel="stylesheet">
     <title>Jacob Stuart's Personal Website</title>
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 300;
-            line-height: 1.6;
-            color: #333;
             background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         header {
@@ -34,78 +18,36 @@
             color: #fff;
             text-align: center;
             padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-
-        header img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border: 3px solid #4CAF50;
         }
 
         header h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 10px;
-            padding: 0 10px;
             font-size: 3em;
+            margin-bottom: 10px;
         }
 
         nav {
-            display: flex;
-            justify-content: center;
             background-color: #4CAF50;
             padding: 10px 0;
-            transition: all 0.3s ease;
+            text-align: center;
         }
-
-        .nav-transition {
-            background-color: #1a1a1a;
-            transition: background-color 0.3s ease;
-        }
-
 
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 8px 16px;
             font-size: 1.1em;
-            font-weight: 400;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #3c8e40;
         }
 
         main {
             padding: 30px;
             max-width: 800px;
             margin: 0 auto;
-            flex-grow: 1;
         }
 
-        h2,
-        h3 {
-            font-family: 'Playfair Display', serif;
+        h2 {
+            font-size: 2em;
             margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .card {
-            background-color: #fff;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            color: #4CAF50;
         }
 
         ul {
@@ -139,210 +81,428 @@
             color: #555;
         }
 
-        .fadeIn {
-            animation: fadeIn 1.5s ease;
+        .hidden {
+            display: none;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
 
-        .section-title {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
+        .image-gallery img {
+            width: 30%;
+            margin-bottom: 20px;
+            border: 3px solid white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #ccc;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .wrapper {
+            width: 80%;
+            text-align: center;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 1rem;
+            -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+            -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+        }
+
+
+        .polaroid-image {
+            position: relative;
             display: inline-block;
-            padding-bottom: 5px;
+            overflow: hidden;
+            border: 2px solid rgba(115, 121, 121, 0.5)
         }
 
-        .experience-title {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            font-weight: 600;
+        .polaroid-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 50%);
+            pointer-events: none;
         }
 
-        .experience-list {
+
+        .polaroid>img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            font-size: 1.8rem;
+            text-align: center;
+            line-height: 2em;
+        }
+
+        .item .polaroid:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            transition: all 0.40s;
+        }
+
+        .item:nth-of-type(2n+1) {
+            transform: scale(0.8, 0.8) rotate(5deg);
+            transition: all 0.35s;
+        }
+
+        .item:nth-of-type(2n+1) .polaroid:before {
+            transform: rotate(6deg);
+            height: 20%;
+            width: 47%;
+            bottom: 30px;
+            right: 12px;
+            box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+        }
+
+        .item:nth-of-type(2n+2) {
+            transform: scale(0.8, 0.8) rotate(-5deg);
+            transition: all 0.35s;
+        }
+
+        .item:nth-of-type(2n+2) .polaroid:before {
+            transform: rotate(-6deg);
+            height: 20%;
+            width: 47%;
+            bottom: 30px;
+            left: 12px;
+            box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+        }
+
+        .item:hover {
+            filter: none;
+            transform: scale(1, 1) rotate(0deg);
+            transition: all 0.40s;
+        }
+
+        .item:hover .polaroid:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            transform: rotate(0deg);
+            height: 60%;
+            width: 60%;
+            bottom: 0%;
+            right: 10%;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+            transition: all 0.35s;
+        }
+
+        .cards-container {
+            display: flex;
+            width: 100%;
+        }
+
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #ccc;
+            text-align: center;
+            position: relative;
+            font-family: 'Roboto';
+            background-size: cover;
+            margin-bottom: 20px;
+        }
+
+
+        .card h3 {
+            background-color: #fff;
+            margin: 0px;
+            border-radius: 10px;
+            padding: 10px 15px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            margin-left: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .column-first {
+            width: calc(50% - 10px);
+            margin-right: 20px;
+        }
+
+        .column-second {
+            width: calc(50% - 10px);
             margin-left: 20px;
         }
 
-        @media screen and (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
-
-            .experience-list {
-                margin-left: 0;
-            }
+        .cards-container::after {
+            display: flex;
+            width: 100%;
         }
 
-        header img,
-        header h1,
-        nav a {
-            transition: all 0.3s ease;
+        .row {
+            display: flex;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
-        .sticky-header {
-            padding: 5px 0;
+        .column-icon {
+            flex: 0 0 50px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .sticky-header img {
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            margin-top: 5px;
-            margin-bottom: 5px;
+
+        .column-description {
+            flex-grow: 1;
+            padding-left: 20px;
         }
 
-        .sticky-header h1 {
-            font-size: 1.5em;
-            margin-bottom: 0;
+        .card li {
+            text-align: left;
+            margin-left: 20px;
+            margin-right: 20px;
         }
-
-        .sticky-header nav a {
-            padding: 4px 16px;
-            font-size: 1em;
-            transition: all 0.3s;
-        }
-        
     </style>
+
+    <script>
+        function showSection(id) {
+            const sections = ['About-Me', 'research-focus', 'Portfolio'];
+            sections.forEach(section => {
+                const el = document.getElementById(section);
+                if (section == id) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
     <header>
-        <img src="your_photo.jpg" alt="Your photo" class="profile-image">
-        <h1 class="fadeIn">Jacob Stuart</h1>
-        <nav>
-            <a href="#education" class="fadeIn">Education</a>
-            <a href="#research-focus" class="fadeIn">Research</a>
-            <a href="#experiences" class="fadeIn">Work Experience</a>
-        </nav>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+            rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <h1>Jacob Stuart</h1>
     </header>
+    <nav>
+        <a href="#About-Me" onclick="showSection('About-Me')">About Me</a>
+        <a href="#research-focus" onclick="showSection('research-focus')">Research</a>
+        <a href="#Portfolio" onclick="showSection('Portfolio')">Portfolio</a>
+    </nav>
     <main>
-        <div class="card fadeIn">
-            <h2 id="education" class="section-title">Education</h2>
-            <ul>
-                <!-- Education items here -->
-                <li>
-                    <strong>PhD:</strong> Human-Centered Computing, University of Florida, Virtual Experiences Research
-                    Group
-                </li>
-                <li>
-                    <strong>Masters:</strong> Computer Science, University of Florida
-                </li>
-                <li>
-                    <strong>Bachelors
-                        :</strong> Computer Science, University of Georgia
-                </li>
-                <li>
-                    <strong>Bachelors:</strong> Cognitive Science, University of Georgia
-                </li>
-            </ul>
-        </div>
-        <div class="card fadeIn">
-            <h2 id="research-focus" class="section-title">Research Focus</h2>
-            <p>Virtual humans and augmented reality in healthcare</p>
-        </div>
-        <div class="card fadeIn">
-            <h2 id="experiences" class="section-title">Work Experience</h2>
-            <div class="experience">
-                <h3 class="experience-title">Graduate Research Assistant</h3>
-                <p>University of Florida (2018 - Present)</p>
-                <ul class="experience-list">
-                    <li>Collaborated with multiple institutions on applied interdisciplinary research initiatives</li>
-                    <li>Developed immersive augmented/virtual reality simulation-based trainings that utilized conversational agents</li>
-                    <li>Designed and conducted user studies</li>
-                    <li>Used statistical methods to analyze, interpret, and report on data</li>
-                    <li>Published and communicated research findings to diverse audiences</li>
-                    <li>Mentored undergraduate students</li>
-                </ul>
-            </div>
-            <div class="experience">
-                <h3 class="experience-title">Graduate Teaching Assistant</h3>
-                <p>University of Florida  (Aug. 2020 – Dec. 2020, Aug. 2022 – Dec. 2022)</p>
-                <ul class="experience-list">
-                    <li>Provided personalized educational, behavioral, and emotional support</li>
-                    <li>Developed teaching materials</li>
-                    <li>Hosted office hours and Q&A sessions</li>
-                    <li>Coordinated with industry partners</li>
-                    <li>Advised students on interactions with corporate partners</li>
-                </ul>
-            </div>
-            <div class="experience">
-                <h3 class="experience-title">Official Lens Creator, Snap Lens Network</h3>
-                <p>Snap Inc. (May 2022 – Present)</p>
-                <ul class="experience-list">
-                    <li>Developed low to high-fidelity lenses</li>
-                    <li>Created original 2D and 3D assets for new AR lenses</li>
-                    <li>Scripted lenses to provide greater interaction</li>
-                    <li>Utilized current pop-culture events to drive user engagement</li>
-                    <li>Accumulated over 3 million views on AR lenses</li>
-                </ul>
-            </div>
-            <div class="experience">
-                <h3 class="experience-title">Spectacles Creator Program</h3>
-                <p>Snap Inc. (Mar. 2022 – May 2022)</p>
-                <ul class="experience-list">
-                    <li>Created medical simulation lenses for the new generation of Spectacles</li>
-                    <li>Engaged in AR development workshops with Snap product and UX designers and Snap AR engineers</li>
-                    <li>Provided feedback on improvements to spectacles software features and hardware</li>
-                    <li>Resulted in changes to landmark-based tracking systems used by Snapchat</li>
-                </ul>
+        <div id="About-Me">
+            <h2>About Me</h2>
+            <div class="cards-container">
+                <div class="column-first">
+                    <div class="card">
+                        <h3>Jacob Stuart</h3>
+                        <h4>Grauduate Research Assistant at UF, Ph.D., Research interests in Virtual Agents,
+                            Human-Computer Interaction, AR/VR/XR</h4>
+                    </div>
+                    <div class="card">
+                        <h3>Skills</h3>
+                        <li>Tools and Technologies - Unity3D, Lens Studio, Google Dialogflow</li>
+                        <li>UI/UX Tools - Miro, Balsamiq, InVision, Figma</li>
+                        <li>UI/UX Techniques - Interviews, Focus Groups, Affinity Diagramming, Storyboarding,
+                            Wireframing.</li>
+                        <li>Creative Tools - Photoshop, Davinci Resolve</li>
+                        <li>Programming - C#, Python, Javascript</li>
+                    </div>
+                    <div class="card">
+                        <h3>Honors, Awards & Talks</h3>
+                        <li>Invited AR/VR Speaker to Human Factors Group at Emory Healthcare 2022</li>
+                        <li>Awarded L3Harris Corporation Graduate Fellowship 2022</li>
+                        <li>Invited Welcome Speaker to Interface Teaching Conference 2021</li>
+                        <li>Invited panelist for IVA COVAR Workshop 2020</li>
+                        <li>Host for UF HCC VR Researcher Panel September 2020</li>
+                    </div>
+                </div>
+                <div class="column-second">
+                    <div class="card">
+                        <h3>About</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Work Experience</h3>
+                        <div id="Work Experience">
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="UFlogo.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Graduate Research Assistant</h4>
+                                    <p>University of Florida, Virtual Experiences Research Group (2018 - Present)</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="UFlogo.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Graduate Research Assistant</h4>
+                                    <p>University of Florida, (Aug. 2020 – Dec. 2020, Aug. 2022 – Dec. 2022)</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="Ghost_Logo_-_Primary.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Official Lens Creator, Snap Lens Network</h4>
+                                    <p>Snap Inc., (May 2022 – Present)</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="Ghost_Logo_-_Primary.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Spectacles Creator Program</h4>
+                                    <p>Snap Inc., (Mar. 2022 – May 2022)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Education</h3>
+                        <div id="Education">
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="UFlogo.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>PhD: Human-Centered Computing</h4>
+                                    <p>University of Florida, Virtual Experiences Research Group</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="UFlogo.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Masters: Computer Science</h4>
+                                    <p>University of Florida</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="UGA_logo.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Bachelors: Computer Science</h4>
+                                    <p>University of Georgia</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column-icon">
+                                    <img src="UGA_logo.png" alt="Icon" width="50" height="50">
+                                </div>
+                                <div class="column-description">
+                                    <h4>Bachelors: Cognitive Science</h4>
+                                    <p>University of Georgia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
 
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/jacobstuart/" target="_blank" class="fadeIn">
-                <i class="fa fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/jacobstuart" target="_blank" class="fadeIn">
-                <i class="fa fa-github"></i>
-            </a>
-            <a href="mailto:jacob.stuart@example.com" target="_blank" class="fadeIn">
-                <i class="fa fa-envelope"></i>
-            </a>
-            <a href="https://scholar.google.com/citations?user=Z3VWiAQAAAAJ&hl=en" target="_blank"
-                rel="noopener noreferrer"><i class="ai ai-google-scholar"></i></a>
+        </div>
+        <div id="research-focus" class="hidden">
+            <h2>Research Focus</h2>
+            <p>Virtual humans and augmented reality in healthcare</p>
+        </div>
+        <div id="Portfolio" class="hidden">
+            <h2>Portfolio</h2>
+
+            <div class="wrapper">
+
+                <div class="item">
+                    <a href="https://lensstudio.snapchat.com/creator/BCFLybHxG79cYvRB3xLEuA"><div class="polaroid">
+                        <img src="snap-gallery.png" class="polaroid-image">
+                        <div class="caption">Augmented Reality Lenses</div>
+                    </div></a>
+                </div>
+
+                <div class="item">
+                    <a href="https://verg.cise.ufl.edu/"><div class="polaroid">
+                        <img src="Expectations_Outcomes.png" class="polaroid-image">
+                        <div class="caption">VERG Website</div>
+                    </div> </a>
+                </div>
+
+                <div class="item">
+                    <a href="https://verg.cise.ufl.edu/ongoing-projects/dysphagia-virtual-patients/"><div class="polaroid">
+                        <img src="dysphagia-system.png" class="polaroid-image">
+                        <div class="caption">Conversational Agent Interaction System</div>
+                    </div></a>
+                </div>
+
+                <div class="item">
+                    <a href="https://verg.cise.ufl.edu/ongoing-projects/previous-projects/simulation-trust-calibration-using-virtual-humans/"><div class="polaroid">
+                        <img src="ER-Bootcamp.png" class="polaroid-image">
+                        <div class="caption">Virtual Nursing Training Experience</div>
+                    </div></a>
+                </div>
+
+                <div class="item">
+                    <a href="https://verg.cise.ufl.edu/ongoing-projects/previous-projects/augmented-reality-triage-simulation/"><div class="polaroid">
+                        <img src="mohanAr.png" class="polaroid-image">
+                        <div class="caption">Augmented Reality Triage Training</div>
+                    </div></a>
+                </div>
+            </div>
+        </div>
         </div>
     </main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let header = document.querySelector("header");
-            let nav = document.querySelector("nav");
 
-            window.addEventListener("scroll", () => {
-                let scrollPosition = window.scrollY;
-
-                if (scrollPosition > 50) {
-                    header.classList.add("sticky-header");
-                    nav.classList.add("nav-transition");
-                } else {
-                    header.classList.remove("sticky-header");
-                    nav.classList.remove("nav-transition");
-                }
-            });
-        });
-
-        document.querySelectorAll("nav a").forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetId = e.target.getAttribute("href");
-            const target = document.querySelector(targetId);
-            const headerHeight = document.querySelector("header").offsetHeight;
-            const targetPosition = (target.offsetTop - headerHeight) - 30;
-
-            window.scrollTo({ top: targetPosition, behavior: "smooth" });
-          });
-        });
-
-    </script>
 </body>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/jacobstuart/" target="_blank" class="fadeIn">
+            <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/jacobstuart" target="_blank" class="fadeIn">
+            <i class="fa fa-github"></i>
+        </a>
+        <a href="mailto:jacob.stuart@example.com" target="_blank" class="fadeIn">
+            <i class="fa fa-envelope"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=Z3VWiAQAAAAJ&hl=en" target="_blank"
+            rel="noopener noreferrer"><i class="ai ai-google-scholar"></i></a>
+        <a href="https://lensstudio.snapchat.com/creator/BCFLybHxG79cYvRB3xLEuA" target="_blank" class="fadeIn">
+            <i class="fab fa-snapchat-ghost"></i>
+    </div>
+</footer>
 
 </html>
