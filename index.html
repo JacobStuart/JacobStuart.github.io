@@ -202,6 +202,28 @@
             transition: all 0.35s;
         }
 
+        .beaumont-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 20px 0;
+        }
+    
+        .beaumont-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .beaumont-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+
         .cards-container {
             display: flex;
             width: 100%;
@@ -227,6 +249,7 @@
             border-radius: 10px;
             padding: 10px 15px;
         }
+        
 
         .column {
             display: flex;
@@ -515,6 +538,14 @@
         </div>
 <div id="Portfolio" class="hidden">
     <h2>Portfolio</h2>
+    <div class="beaumont-grid">
+        <img src="project1.jpg" alt="Project 1">
+        <img src="project2.jpg" alt="Project 2">
+        <img src="project3.jpg" alt="Project 3">
+        <img src="project4.jpg" alt="Project 4">
+        <img src="project5.jpg" alt="Project 5">
+        <img src="project6.jpg" alt="Project 6">
+    </div>
 </div>
 
     </main>
