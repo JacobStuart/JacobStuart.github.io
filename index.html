@@ -264,6 +264,34 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
 
+        .portfolio-grid-basic {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .grid-item {
+            width: 100%;
+            display: block;
+        }
+        
+        .grid-image-inner-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 3 / 2; /* Approx. 651 x 448 ratio */
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid-basic {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
 
         .cards-container {
             display: flex;
@@ -716,6 +744,47 @@
     </div>
 </div>
 
+        <div id="Portfolio" class="hidden">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid-basic">
+        <a class="grid-item" href="#">
+            <div class="grid-image">
+                <div class="grid-image-inner-wrapper">
+                    <img src="P1.png" alt="Project 1">
+                </div>
+            </div>
+            <div class="portfolio-text">
+                <h3 class="portfolio-title">Project 1</h3>
+            </div>
+        </a>
+
+        <a class="grid-item" href="#">
+            <div class="grid-image">
+                <div class="grid-image-inner-wrapper">
+                    <img src="P2.png" alt="Project 2">
+                </div>
+            </div>
+            <div class="portfolio-text">
+                <h3 class="portfolio-title">Project 2</h3>
+            </div>
+        </a>
+
+        <a class="grid-item" href="#">
+            <div class="grid-image">
+                <div class="grid-image-inner-wrapper">
+                    <img src="P3.png" alt="Project 3">
+                </div>
+            </div>
+            <div class="portfolio-text">
+                <h3 class="portfolio-title">Project 3</h3>
+            </div>
+        </a>
+
+        <!-- Repeat for other projects -->
+    </div>
+</div>
+
+
     </main>
 
 
@@ -723,7 +792,7 @@
 
 <footer>
     <div class="social-icons">
-        <a href="www.linkedin.com/in/jacob-stuart-929727132" target="_blank" class="fadeIn">
+        <a href="https://www.linkedin.com/in/jacob-stuart-929727132" target="_blank" class="fadeIn">
             <i class="fa fa-linkedin"></i>
         </a>
         <a href="https://github.com/jacobstuart" target="_blank" class="fadeIn">
